@@ -1,0 +1,42 @@
+﻿@using School.Library.Models;
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    var LessonList = (List<Lesson>)ViewBag.LessonList;
+}
+
+<p>
+    @Html.ActionLink("Yeni Oluştur", "Create")
+</p>
+
+<h2>Dersler</h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Ders Adı</th>
+        <th>Açıklama</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in LessonList)
+    {
+        <tr>
+            <td>
+                <label>@item.Id</label>
+            </td>
+            <td>
+                <label>@item.Name</label>
+            </td>
+            <td>
+                <label>@item.Description</label>
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+

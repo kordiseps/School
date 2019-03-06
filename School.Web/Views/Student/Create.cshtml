@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yeni Öğrenci Oluştur</h2>
+
+@using (Html.BeginForm())
+{
+
+
+    <div class="form-horizontal">
+        <h4>Öğrenci Ekle</h4>
+        <hr />
+
+        <div class="form-group">
+            <label>Kişi</label>
+            <div class="col-md-10">
+                <select>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Sınıf</label>
+            <div class="col-md-10">
+                <input type="text" name="FirstName" class="form-control" />
+            </div>
+        </div>
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success">Ekle</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</div>

@@ -1,0 +1,41 @@
+﻿@using School.Web.ViewModels
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    var StudentList = (List<StudentViewModel>)ViewBag.StudentList;
+}
+
+<p>
+    @Html.ActionLink("Yeni Oluştur", "Create")
+</p>
+
+<h2>Kişiler</h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Ad Soyad</th>
+        <th>Sınıf</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in StudentList)
+    {
+        <tr>
+            <td>
+                <label>@item.StudentId</label>
+            </td>
+            <td>
+                <label>@item.PersonName</label>
+            </td>
+            <td>
+                <label>@item.ClassName</label>
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.StudentId }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.StudentId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.StudentId })
+            </td>
+        </tr>
+    }
+
+</table>

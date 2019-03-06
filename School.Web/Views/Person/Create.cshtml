@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yeni Kişi Oluştur</h2>
+
+@using (Html.BeginForm())
+{
+
+
+<div class="form-horizontal">
+    <h4>Kişi Ekle</h4>
+    <hr />
+
+    <div class="form-group">
+        <label>Ön Ek</label>
+        <div class="col-md-10">
+            <input type="text" name="Prefix" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>İlk Adı</label>
+        <div class="col-md-10">
+            <input type="text" name="FirstName" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Diğer Adı</label>
+        <div class="col-md-10">
+            <input type="text" name="MiddleName" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Soyadı</label>
+        <div class="col-md-10">
+            <input type="text" name="LastName" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Doğum Tarihi</label>
+        <div class="col-md-10">
+            <input type="datetime-local" name="BirthDay" value="1990-01-01T19:30"
+                   min="1900-01-01T00:00" max="2015-01-01T00:00">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-success">Ekle</button>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</div>

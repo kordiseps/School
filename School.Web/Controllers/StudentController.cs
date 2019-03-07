@@ -18,31 +18,36 @@ namespace School.Web.Controllers
         public ActionResult Index()
         {
             var students = new List<StudentViewModel>();
-            DataAccess.Read<Student>().ForEach(student=> students.Add(new StudentViewModel(student)));
+            var studentsFromDB = DataAccess.Read<Student>();
+            if (studentsFromDB!= null && studentsFromDB.Count>0)
+            {
+                studentsFromDB.ForEach(student => students.Add(new StudentViewModel(student)));
+            }
             ViewBag.StudentList = students;
             return View();
         }
         public ActionResult Create()
         {
+            var persons =  DataAccess.Read<Person>().Select(c => new KeyValuePair<int, string>(c.Id, $"{c.FirstName} {c.MiddleName} {c.LastName}")).ToList();
+            var classes = DataAccess.Read<Class>().Select(c => new KeyValuePair<int, string>(c.Id, $"{c.Grade}-{c.Branch}")).ToList();
+            ViewBag.PersonList = persons;
+            ViewBag.ClassList = classes;
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(int PersonId, int ClassId)
         {
-            //var person = new Person()
-            //{
-            //    Prefix = Prefix,
-            //    FirstName = FirstName,
-            //    MiddleName = MiddleName,
-            //    LastName = LastName,
-            //    BirthDay = BirthDay.ToString()
-            //};
-            //var persons = DataAccess.Read<Person>();
-            //person.Id = persons.Count > 0 ? persons.OrderByDescending(l => l.Id).FirstOrDefault().Id + 1 : 1;
-            //persons.Add(person);
-            //DataAccess.Write(persons);
-            return View();
+            var student = new Student()
+            {
+                ClassId=ClassId,
+                PersonId=PersonId
+            };
+            var students = DataAccess.Read<Student>();
+            student.Id = students.Count > 0 ? students.OrderByDescending(l => l.Id).FirstOrDefault().Id + 1 : 1;
+            students.Add(student);
+            DataAccess.Write(students);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -21,5 +21,13 @@
     @Html.Partial("~/Views/Shared/Footer.cshtml")
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>
+        $('select').on('change', function () {
+            var _name = $(this).attr("name");
+            var _val = $(this).val();
+            $('input[name=' + _name + '').val(_val);                
+        });
+    </script>
 </body>
 </html>

@@ -7,3 +7,4 @@ School.Library/obj/*
 School.Web/bin/*
 
 School.Web/obj/*
+/School.Web/Properties/PublishProfiles

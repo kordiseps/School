@@ -8,34 +8,80 @@
     @Html.ActionLink("Yeni Oluştur", "Create")
 </p>
 
-<h2>Öğrenciler</h2>
 
-<table class="table">
-    <tr>
-        <th>Id</th>
-        <th>Ad Soyad</th>
-        <th>Sınıf</th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in StudentList)
-    {
-        <tr>
-            <td>
-                <label>@item.StudentId</label>
-            </td>
-            <td>
-                <label>@item.PersonName</label>
-            </td>
-            <td>
-                <label>@item.ClassName</label>
-            </td>
-            <td>
-                @Html.ActionLink("Düzenle", "Edit", new { id = item.StudentId }) |
-                @Html.ActionLink("Detaylar", "Details", new { id = item.StudentId }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.StudentId })
-            </td>
-        </tr>
-    }
 
-</table>
+<div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- pageheader -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h2 class="pageheader-title">Blank Pageheader </h2>
+                <div class="page-breadcrumb">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Menü</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Öğrenciler</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Öğrenci Listesi</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end pageheader -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Öğrenci Tablosu </h5>
+                    <p>Okulumuza kayıtlı öğrencilerin tamamı aşağıdaki listededir.</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example3" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Ad Soyad</th>
+                                    <th>Sınıf</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in StudentList)
+                                {
+                                    <tr>
+                                        <td>@item.StudentId</td>
+                                        <td>@item.PersonName</td>
+                                        <td>@item.ClassName</td>
+                                        <td>
+                                            @Html.ActionLink("Düzenle", "Edit", new { id = item.StudentId }) |
+                                            @Html.ActionLink("Detaylar", "Details", new { id = item.StudentId }) |
+                                            @Html.ActionLink("Sil", "Delete", new { id = item.StudentId })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Ad Soyad</th>
+                                    <th>Sınıf</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

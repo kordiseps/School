@@ -2,32 +2,80 @@
 @{
     Layout = null;
 }
+<!doctype html>
+<html lang="en">
 
-<!DOCTYPE html>
 
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Layout</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Okul Yönetim Sistemi</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/circular-std/style.css">
+    <link rel="stylesheet" href="../../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
 </head>
+
 <body>
-    @Html.Partial("~/Views/Shared/Header.cshtml")
-    <div>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
 
-        @RenderBody()
+        @Html.Partial("~/Views/Shared/Header.cshtml")
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
 
+        @Html.Partial("~/Views/Shared/Sidebar.cshtml")
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                @RenderBody()
+              
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+
+            @Html.Partial("~/Views/Shared/Footer.cshtml")
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end main wrapper -->
+        <!-- ============================================================== -->
     </div>
-    @Html.Partial("~/Views/Shared/Footer.cshtml")
-    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../../assets/libs/js/main-js.js"></script>
 
     <script>
         $('select').on('change', function () {
             var _name = $(this).attr("name");
             var _val = $(this).val();
-            $('input[name=' + _name + '').val(_val);                
+            $('input[name=' + _name + '').val(_val);
         });
     </script>
 </body>
+
 </html>
